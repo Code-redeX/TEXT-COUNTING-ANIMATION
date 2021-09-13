@@ -1,0 +1,122 @@
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+}
+
+@property --num
+{
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits:false;
+}
+
+div
+{
+    counter-reset: num var(--num);
+    font-size: 10rem;
+    font-weight:700;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing : 10px;
+    color: #222;
+    animation: counter 12.5s infinite ease-in-out, shadowcolor 12.5s infinite ease-in-out;
+}
+
+    div::after 
+    {
+        content: counter(num);
+    }
+
+    @keyframes counter
+    {
+        0%
+        {
+            --num: 0;
+        }
+        80%
+        {
+            --num: 200;
+        }
+        100%
+        {
+            --num: 200;
+        }
+    }
+
+    @keyframes shadowcolor
+    {
+        0%
+        {
+            
+        }
+        50%
+        {
+            color : #FFF;
+        }
+        80%
+        {
+            color : #FFF;
+            text-shadow:
+            0 0 10px rgba(255,255,255,0.5),
+            0 0 20px rgba(255,255,255,0.5),
+            0 0 40px rgba(255,255,255,0.5),
+            0 0 80px rgba(255,255,255,0.5),
+            0 0 120px rgba(255,255,255,1);
+        }
+        90%
+        {
+            text-shadow: none;
+        }
+        100%
+        {
+            color : #222;
+            text-shadow:none;
+        }
+    }
+
+p
+{
+    position: absolute;
+    top: 90vh;
+    right:10vw;
+    font-size:1.7rem;
+    font-style:oblique;
+    letter-spacing:3px;
+    color: #222;
+    text-transform:uppercase;
+    -webkit-box-reflect:below 1px linear-gradient(transparent,#0008);
+    -moz-box-reflect:below 1px linear-gradient(transparent,#0008);
+    -ms-box-reflect:below 1px linear-gradient(transparent,#0008);
+    -o-box-reflect:below 1px linear-gradient(transparent,#0008);
+    line-height:1rem;
+    outline:none;
+    animation: light 4s linear infinite;
+}
+
+@keyframes light
+{
+    18.1%,20.1%,30%,50%,60.1%,65%,80.1%,90%,92.1%,100%
+    {
+        color: #222;
+        text-shadow: none;
+    }
+    0%,18%,20%,50.1%,60%,65.1%,80%,90.1%,92%
+    {
+        color: white;
+        text-shadow:0 0 1.0vw #FFF,
+        0 0 2.0vw #FFF,
+        0 0 4.0vw #FFF,
+        0 0 8.0vw rgba(255,255,255,0.5),
+        0 0 16.0vw rgba(255,255,255,0.5);
+    }
+}
